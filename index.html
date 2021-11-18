@@ -23,8 +23,10 @@
     <div class="container">
       <navbar :titulo="'Juan M Ruiz'"></navbar>
       <banner></banner>
-      <div class="row">
-        <card></card>
+      <div class="row p-4">
+        <div class="col-3" v-for="(comida, i) in comidas" :key="i">
+          <card :comida="comida"></card>
+        </div>
       </div>
     </div>
   </div>

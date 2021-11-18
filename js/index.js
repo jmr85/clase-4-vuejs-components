@@ -1,5 +1,8 @@
-Vue.component('navbar',{
-    props: ['titulo'],
+Vue.component('navbar', {
+    props: {
+        'titulo': String,
+        default: 'Vue.js'
+    },
     template: `
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">{{ titulo }}</a>
@@ -38,19 +41,21 @@ Vue.component('navbar',{
         </nav>
     `
 });
-Vue.component('banner',{
+Vue.component('banner', {
     template: `
         <div class="banner">
             <h1>Hola coders</h1>
         </div>
     `
 });
-Vue.component('card',{
+Vue.component('card', {
+    props: ['comida'],
     template: `
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <img :src="comida.portada" >
+            <div class="card-body">             
+                <h5 class="card-title">{{comida.titulo}}</h5>
+                <p class="card-text">{{comida.costo}}</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
@@ -58,38 +63,64 @@ Vue.component('card',{
 });
 
 var app = new Vue({
-  el: "#app",
+    el: "#app",
 
-  data: {
-    // Binding
-    // variableText: "Utilizando v-text",
-    // elementoHTML: `<strong>Vengo en strong desde variable</strong>`,
-    // sourceImagen: './logo-vue.jpg',
-    // Two Way Binding
-    // mensaje: "",
-    // numeroUno: 20,
-    // numeroDos: 50,
-    // fondo: false
-  },
+    data: {
+        comidas: [
+            {
+                id: 1,
+                titulo: "Spaghetti alla bolognesa",
+                costo: 575.00,
+                portada: "https://4.bp.blogspot.com/-D5Wvi_gX_Kg/WLatk_GVnKI/AAAAAAAAA5M/-y0gB26R0Dkb01QmdgfZqQALtd9NMV2DACLcB/s1600/P70301-072354.jpg"
+            },
+            {
+                id: 2,
+                titulo: "Pizza Napoletana ai carciofi",
+                costo: 675.00,
+                portada: "https://static.cookist.it/wp-content/uploads/sites/21/2017/12/istock-480277738.jpg"
+            },
+            {
+                id: 3,
+                titulo: "Porchetta umbra a cottura lunga",
+                costo: 845.00,
+                portada: "https://www.fontecesia.it/wp-content/uploads/2018/11/porchetta-umbra-1920x1280.jpg"
+            },
+            {
+                id: 4,
+                titulo: "Orecchiette alle cime di rapa",
+                costo: 845.00,
+                portada: "https://irepo.primecp.com/2016/03/259860/recipe-8673_ExtraLarge1000_ID-1461628.jpg"
+            }
+        ]
+        // Binding
+        // variableText: "Utilizando v-text",
+        // elementoHTML: `<strong>Vengo en strong desde variable</strong>`,
+        // sourceImagen: './logo-vue.jpg',
+        // Two Way Binding
+        // mensaje: "",
+        // numeroUno: 20,
+        // numeroDos: 50,
+        // fondo: false
+    },
 
 
-//   methods: {
-//       funcionAlertar(parametro){
-//           alert(`El parametro es: ${parametro}`)
-//       },
-//       funcionLimpiarInputMensaje(){
-//           this.mensaje = ""
-//       },
-//       funcionSuma(){
-//           return this.numeroUno + this.numeroDos
-//       },
-//       funcionCambiarFondo(){
-//           this.fondo = !this.fondo
-//       }
-//   },
-//   computed: {
-//       mensajeConVue(){
-//           return `${this.mensaje} con Vue!`
-//       }
-//   }
+    //   methods: {
+    //       funcionAlertar(parametro){
+    //           alert(`El parametro es: ${parametro}`)
+    //       },
+    //       funcionLimpiarInputMensaje(){
+    //           this.mensaje = ""
+    //       },
+    //       funcionSuma(){
+    //           return this.numeroUno + this.numeroDos
+    //       },
+    //       funcionCambiarFondo(){
+    //           this.fondo = !this.fondo
+    //       }
+    //   },
+    //   computed: {
+    //       mensajeConVue(){
+    //           return `${this.mensaje} con Vue!`
+    //       }
+    //   }
 });
